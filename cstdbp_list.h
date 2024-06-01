@@ -19,6 +19,19 @@
 #include <string.h>
 
 /**
+ * accept the pointer to the struct and just initialize is allocating space for list
+*/
+#define std_list_init(list,capacity) \
+    do { \
+        assert((capacity) < 1 && "ERROR(List): cannot initialize an list with 0 capacity!");\
+        (list)->items = calloc(cap, sizeof (*((list)->items))); \
+            assert((list)->items != NULL && "ERROR(List): Out of Memory");     \
+        (list)->len=0;\
+        (list)->cap=capacity;\
+    }while(0)
+
+
+/**
  * Macro accept list, index and item and insert the item in the list at
  * specified index if its < length list is accpted as a pointer
  */
